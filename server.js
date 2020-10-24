@@ -40,6 +40,7 @@ app.get('/api/candidates', (req, res) => {
     FROM candidates 
     LEFT JOIN parties 
     ON candidates.party_id = parties.id`;
+    const params = [];
     db.all(sql, params, (err, rows) => {
       if (err) {
         res.status(500).json({ error: err.message });
@@ -59,6 +60,7 @@ app.get('/api/candidates', (req, res) => {
     FROM candidates 
     LEFT JOIN parties 
     ON candidates.party_id = parties.id`;
+    const params = [req.params.id];
     db.all(sql, params, (err, rows) => {
       if (err) {
         res.status(500).json({ error: err.message });
@@ -109,7 +111,7 @@ app.delete('/api/candidate/:id', (req, res) => {
       });
     });
   });
-  
+
 // Create a candidate
 app.post('/api/candidate', ({ body }, res) => {
     const errors = inputCheck(body, 'first_name', 'last_name', 'industry_connected');
