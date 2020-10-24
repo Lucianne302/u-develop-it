@@ -10,4 +10,4 @@ const db = new sqlite3.Database('./db/election.db', err => {
   });
 
 
-  module.exports = db;
+module.exports = db;
