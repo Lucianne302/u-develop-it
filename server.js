@@ -7,12 +7,12 @@ const app = express();
 
 const apiRoutes = require('./routes/apiRoutes');
 
-// Use apiRoutes
-app.use('/api', apiRoutes);
-
 // Express middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+// Use apiRoutes
+app.use('/api', apiRoutes);
 
 //   db.all(`SELECT * FROM candidates`, (err, rows) => {
 //     console.log(rows);
